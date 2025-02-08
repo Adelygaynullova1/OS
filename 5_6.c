@@ -31,12 +31,12 @@ void search_files(const char *dir_path, FILE *output_file, off_t min_size, off_t
         }
 
         if (S_ISDIR(file_stat.st_mode)) {
-            search_files(full_path, output_file, min_size, max_size, min_time, max_time);
+            search_files(full_path, output_file, min_size, max_size, min_time, max_time); //Формирует полный путь к файлу, объединяя путь к каталогу и имя файла.
         } else {
             if (file_stat.st_size >= min_size && file_stat.st_size <= max_size &&
                 file_stat.st_ctime >= min_time && file_stat.st_ctime <= max_time) {
                 char time_str[20];
-                struct tm *tm_info = localtime(&file_stat.st_ctime);
+                struct tm *tm_info = localtime(&file_stat.st_ctime); //содержит разбитое на компоненты время (год, месяц, день, час, минута, секунда).
                 strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
 
                 printf("%s | Размер: %ld байт | Дата создания: %s\n", full_path, file_stat.st_size, time_str);
