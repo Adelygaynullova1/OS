@@ -31,7 +31,7 @@ void search_files(const char *dir_path, FILE *output_file, off_t min_size, off_t
         }
 
         if (S_ISDIR(file_stat.st_mode)) {
-            search_files(full_path, output_file, min_size, max_size, min_time, max_time); //Формирует полный путь к файлу, объединяя путь к каталогу и имя файла.
+            search_files(full_path, output_file, min_size, max_size, min_time, max_time); 
         } else {
             if (file_stat.st_size >= min_size && file_stat.st_size <= max_size &&
                 file_stat.st_ctime >= min_time && file_stat.st_ctime <= max_time) {
