@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     strptime(argv[5], "%Y-%m-%d", &tm1);
     strptime(argv[6], "%Y-%m-%d", &tm2);
     time_t min_time = mktime(&tm1);
-    time_t max_time = mktime(&tm2);
+    time_t max_time = mktime(&tm2) + 86399;
 
     FILE *output_file = fopen(output_filename, "w");
     if (!output_file) {
